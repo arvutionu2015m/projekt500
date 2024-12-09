@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center">Tooted</h1>
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-4">
+        <div class="card">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.description|truncatechars:100 }}</p>
+                <p class="card-text">{{ product.price }} €</p>
+                <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">Lisa ostukorvi</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

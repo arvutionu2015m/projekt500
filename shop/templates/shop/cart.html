@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center">Ostukorv</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Toode</th>
+            <th>Kogus</th>
+            <th>Hind</th>
+            <th>Vahekokku</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in cart_items %}
+        <tr>
+            <td>{{ item.product.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.product.price }}</td>
+            <td>{{ item.subtotal }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p class="text-end">Kokku: {{ total }} €</p>
+{% endblock %}
